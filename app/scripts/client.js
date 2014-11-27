@@ -34,7 +34,7 @@ $('#submit').click(function (e){
   });
 });
 
-var maxNoise = 10;
+var maxNoise = 1;
 
 var init = function (){
 
