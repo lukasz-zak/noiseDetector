@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+
+</head>
+<body>
+
+<form action="">
+  <label for="userName">UserName</label>
+  <input type="text" id="userName"/>
+</form>
+
+<div class="col">
+
+  <div id="siarap-graph">
+    <span id="siarap-graph-value"></span>
+
+    <b class="pull-right" id="siarap-max-volume">0</b>
+  </div>
+</div>
+
+<script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+<script src="scripts/client.js"></script>
+</body>
+</html>

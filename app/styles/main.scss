@@ -1,0 +1,27 @@
+body {
+  padding: 20px;
+}
+
+#siarap-graph {
+  width: 100%;
+  border: 1px solid black;
+  height: 120px;
+  position: relative;
+
+  span {
+    display: block;
+    width: 0;
+    height: 118px;
+    background-color: red;
+    position: absolute;
+  }
+
+  b {
+    font-size: 20px;
+    position: absolute;
+
+    &.pull-right {
+      right: 0;
+    }
+  }
+}
