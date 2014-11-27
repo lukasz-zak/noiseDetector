@@ -67,7 +67,6 @@ pn.subscribe({
 pn.subscribe({
   channel: 'noiseInfo',
   message: function(m){
-    console.log('m', m);
 
     if(m.currVolume){
       $('#currVol_' + m.areaName).text(m.currVolume);

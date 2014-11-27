@@ -105,7 +105,6 @@ var init = function (){
       var ms = new Date().getMilliseconds();
 
       if(ms >= 1 && ms <= intervalTime + 1 || ms >= 500 && ms <= 500 + intervalTime + 1){
-        console.log('log', currNoise);
         pn.publish({
           channel: 'noiseInfo',
           message: {
