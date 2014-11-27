@@ -14,14 +14,21 @@
   <!-- endbuild -->
 
 </head>
-<body>
+<body class="fullscreen_bg">
 
-<form action="">
-  <label for="userName">UserName</label>
-  <input type="text" id="userName"/>
-</form>
+<div class="container">
 
-<div class="col">
+  <form class="form-signin">
+    <h1 class="form-signin-heading text-muted">Sign In</h1>
+    <input type="text" class="form-control" placeholder="Area name" required=""  id="userName" autofocus="">
+    <button class="btn btn-lg btn-primary btn-block" id="submit">
+      Connect
+    </button>
+  </form>
+
+</div>
+
+<div class="col" id="detector">
 
   <div id="siarap-graph">
     <span id="siarap-graph-value"></span>
