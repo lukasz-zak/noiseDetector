@@ -5,12 +5,14 @@ var pn = PUBNUB.init({
 
 var smoothie = new SmoothieChart({
   grid: {
-    strokeStyle:'rgb(125, 0, 0)', fillStyle:'rgb(60, 0, 0)',
-    lineWidth: 1, millisPerLine: 250, verticalSections: 6
+    strokeStyle:'rgba(100, 100, 100, 0.5)', fillStyle:'rgb(200, 200, 200)',
+    lineWidth: 1, millisPerLine: 100, verticalSections: 6
   },
   labels: {
-    fillStyle:'rgb(60, 0, 0)'
-  }
+    fillStyle:'rgb(0, 0, 0)',
+    fontSize : 20
+  },
+  maxValue : 140
 });
 smoothie.streamTo(document.getElementById("myChart"), 500);
 
@@ -35,9 +37,9 @@ function hexToRgb(hex, opacity) {
 var generateHtmlForNewUser = function (areaName, ua){
 
   return $('<a href="#" style="background-color: '+colors[areaName]+'" class="list-group-item">' +
-      '<h4 class="list-group-item-heading">'+ areaName +'</h4>' +
       '<span class="label label-danger pull-right" id="maxVol_'+areaName+'"></span>' +
       '<span class="label label-info pull-right" id="currVol_'+areaName+'"></span>' +
+      '<h4 class="list-group-item-heading">'+ areaName +'</h4>' +
       '<p class="list-group-item-text">'+ ua +'</p>' +
     '</a>'
   );
