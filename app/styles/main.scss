@@ -28,7 +28,7 @@ body {
   left: 0;
   background-size: cover;
   background-position: 50% 50%;
-  background-image: url('http://images.sixrevisions.com/2009/09/16-10_dark_sleek_blog_07.jpg');
+  background-color: #222222;
   background-repeat:repeat;
 }
 .form-signin {
@@ -74,6 +74,9 @@ body {
 h4 {
   text-shadow: 1px -1px 0px #aaa;
 }
+h3 {
+  color: #fff;
+}
 
 #siarap-graph {
   width: 100%;
@@ -98,4 +101,9 @@ h4 {
       right: 0;
     }
   }
+}
+
+.list-group-item {
+  width: 100%;
+  max-width: 1200px;
 }
