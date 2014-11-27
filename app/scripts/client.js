@@ -3,6 +3,8 @@ var analyser;
 var microphone;
 var siarapGraphValue = document.getElementById('siarap-graph-value');
 var siarapMaxVolumeValue = document.getElementById('siarap-max-volume');
+var areaName;
+var intervalTime = 10;
 
 var input = $('#userName');
 var detector = $('#detector');
@@ -17,13 +19,17 @@ var pn = PUBNUB.init({
 $('#submit').click(function (e){
   e.preventDefault();
 
-  console.log('input.val()', input.val());
+  areaName = input.val();
+
+  $('.container').hide();
+  detector.show();
+  init();
 
   pn.publish({
     channel : 'users',
     message : {
       'user' : navigator.userAgent,
-      'area' : input.val()
+      'areaName' : areaName
     }
   });
 });
@@ -73,14 +79,22 @@ var init = function (){
 
       var average = getAverageVolume(array);
 
-      var currNoise = average / maxNoise * 100;
+      var currNoise = Math.round(average / maxNoise * 100, 2);
 
       if(average > maxNoise) {
-        maxNoise = average;
+        maxNoise = Math.round(average, 2);
+
+        pn.publish({
+          channel: 'noiseInfo',
+          message: {
+            areaName    : areaName,
+            maxVolume  : maxNoise
+          }
+        });
       }
 
       siarapGraphValue.style.width = currNoise + '%';
-      siarapMaxVolumeValue.textContent = Math.round(maxNoise, 2);
+      siarapMaxVolumeValue.textContent = maxNoise;
 
       if(currNoise >= 40) {
         siarapGraphValue.style.backgroundColor = 'red';
@@ -88,11 +102,19 @@ var init = function (){
         siarapGraphValue.style.backgroundColor = 'green';
       }
 
-      pn.publish({
-        channel: 'demo_tutorial',
-        message: {"volume": currNoise}
-      });
+      var ms = new Date().getMilliseconds();
 
-    },1000);
+      if(ms >= 1 && ms <= intervalTime + 1){
+        console.log('log', currNoise);
+        pn.publish({
+          channel: 'noiseInfo',
+          message: {
+            areaName    : areaName,
+            currVolume  : currNoise
+          }
+        });
+      }
+
+    },intervalTime);
   }
 };
